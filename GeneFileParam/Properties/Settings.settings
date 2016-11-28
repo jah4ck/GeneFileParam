@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="GeneFileParam_ReferenceWSCtrlPc_WSCtrlPc" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://192.168.1.24:8030/WSCtrlPc.asmx</Value>
+      <Value Profile="(Default)">http://86.247.64.225:8030/WSCtrlPc.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

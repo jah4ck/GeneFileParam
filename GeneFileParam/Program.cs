@@ -15,6 +15,8 @@ namespace GeneFileParam
             Object Guid = Registry.GetValue(@"HKEY_USERS\.DEFAULT\Software\CtrlPc\Version", "GUID", null);
             DateTime datetraitement = DateTime.Now;
             ReferenceWSCtrlPc.WSCtrlPc ws = new ReferenceWSCtrlPc.WSCtrlPc();
+
+            //génération du planning
             try
             {
                 datetraitement = DateTime.Now;
@@ -32,6 +34,8 @@ namespace GeneFileParam
 
                 
             }
+
+            //génération du flag d'arrêt arr.flg
             try
             {
                 datetraitement = DateTime.Now;
@@ -46,6 +50,22 @@ namespace GeneFileParam
             {
                 datetraitement = DateTime.Now;
                 ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 1, "Erreur lors de la génération du arr.flg -->"+err.Message);
+            }
+
+            //génération du flag d'exception nfo.flg
+            try
+            {
+                datetraitement = DateTime.Now;
+                ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 2, "Génération du nfo.flg");
+                string nfo = ws.GetException(Guid.ToString());
+                StreamWriter write = new StreamWriter(@"C:\ProgramData\CtrlPc\FLAG\nfo.flg");
+                write.WriteLine(nfo);
+                write.Close();
+            }
+            catch (Exception err)
+            {
+                datetraitement = DateTime.Now;
+                ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 1, "Erreur lors de la génération du nfo.flg -->"+err.Message);
             }
             
         }
