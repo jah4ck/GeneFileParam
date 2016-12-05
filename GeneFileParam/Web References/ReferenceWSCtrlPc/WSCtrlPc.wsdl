@@ -100,6 +100,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetRemLogInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemLogInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRemLogInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetDownloadFile">
         <s:complexType>
           <s:sequence>
@@ -232,6 +246,12 @@
   <wsdl:message name="GetPlageHoraireSoapOut">
     <wsdl:part name="parameters" element="tns:GetPlageHoraireResponse" />
   </wsdl:message>
+  <wsdl:message name="GetRemLogInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemLogInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRemLogInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemLogInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDownloadFileSoapIn">
     <wsdl:part name="parameters" element="tns:GetDownloadFile" />
   </wsdl:message>
@@ -302,6 +322,10 @@
     <wsdl:operation name="GetPlageHoraire">
       <wsdl:input message="tns:GetPlageHoraireSoapIn" />
       <wsdl:output message="tns:GetPlageHoraireSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemLogInfo">
+      <wsdl:input message="tns:GetRemLogInfoSoapIn" />
+      <wsdl:output message="tns:GetRemLogInfoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetDownloadFile">
       <wsdl:input message="tns:GetDownloadFileSoapIn" />
@@ -390,6 +414,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPlageHoraire">
       <soap:operation soapAction="http://tempuri.org/GetPlageHoraire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemLogInfo">
+      <soap:operation soapAction="http://tempuri.org/GetRemLogInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -519,6 +552,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPlageHoraire">
       <soap12:operation soapAction="http://tempuri.org/GetPlageHoraire" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemLogInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetRemLogInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

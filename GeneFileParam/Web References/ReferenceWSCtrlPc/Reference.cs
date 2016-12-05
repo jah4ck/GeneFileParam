@@ -43,6 +43,8 @@ namespace GeneFileParam.ReferenceWSCtrlPc {
         
         private System.Threading.SendOrPostCallback GetPlageHoraireOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetRemLogInfoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDownloadFileOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetDownloadFileOperationCompleted;
@@ -115,6 +117,9 @@ namespace GeneFileParam.ReferenceWSCtrlPc {
         
         /// <remarks/>
         public event GetPlageHoraireCompletedEventHandler GetPlageHoraireCompleted;
+        
+        /// <remarks/>
+        public event GetRemLogInfoCompletedEventHandler GetRemLogInfoCompleted;
         
         /// <remarks/>
         public event GetDownloadFileCompletedEventHandler GetDownloadFileCompleted;
@@ -357,6 +362,35 @@ namespace GeneFileParam.ReferenceWSCtrlPc {
             if ((this.GetPlageHoraireCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPlageHoraireCompleted(this, new GetPlageHoraireCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRemLogInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetRemLogInfo(string guid) {
+            object[] results = this.Invoke("GetRemLogInfo", new object[] {
+                        guid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRemLogInfoAsync(string guid) {
+            this.GetRemLogInfoAsync(guid, null);
+        }
+        
+        /// <remarks/>
+        public void GetRemLogInfoAsync(string guid, object userState) {
+            if ((this.GetRemLogInfoOperationCompleted == null)) {
+                this.GetRemLogInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRemLogInfoOperationCompleted);
+            }
+            this.InvokeAsync("GetRemLogInfo", new object[] {
+                        guid}, this.GetRemLogInfoOperationCompleted, userState);
+        }
+        
+        private void OnGetRemLogInfoOperationCompleted(object arg) {
+            if ((this.GetRemLogInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRemLogInfoCompleted(this, new GetRemLogInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -715,6 +749,32 @@ namespace GeneFileParam.ReferenceWSCtrlPc {
         private object[] results;
         
         internal GetPlageHoraireCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRemLogInfoCompletedEventHandler(object sender, GetRemLogInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRemLogInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRemLogInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

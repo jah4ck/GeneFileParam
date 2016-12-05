@@ -61,17 +61,22 @@ namespace GeneFileParam
             }
             catch (Exception err)
             {
-                MyTrace.WriteLog("Erreude génération du nfo.flg => "+err.Message, 2, codeappli);
+                MyTrace.WriteLog("Erreur de génération du nfo.flg => "+err.Message, 2, codeappli);
             }
 
             //génération du fichier RemLog.nfo
             try
             {
-
+                datetraitement = DateTime.Now;
+                MyTrace.WriteLog("Génération remlog.nfo", 2, codeappli);
+                string remlog = ws.GetRemLogInfo(Guid.ToString());
+                StreamWriter write = new StreamWriter(@"C:\ProgramData\CtrlPc\SCRIPT\RemLog.nfo");
+                write.WriteLine(remlog);
+                write.Close();
             }
             catch (Exception err)
             {
-
+                MyTrace.WriteLog("Erreur de génération du RemLog.nfo => " + err.Message, 2, codeappli);
             }
             
         }
