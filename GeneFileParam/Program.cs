@@ -30,9 +30,12 @@ namespace GeneFileParam
             catch (Exception err)
             {
                 datetraitement = DateTime.Now;
-                ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 1,"Erreur lors de la génération de Planning.csv --> "+ err.Message);
-
-                
+                string NameDate = datetraitement.ToString("yyyyMMdd");
+                string Date = datetraitement.ToString("dd/MM/yyyy HH:mm:ss");
+                using (StreamWriter writer = File.AppendText(@"C:\ProgramData\CtrlPc\LOG\JOURNAL_ERREUR_" + NameDate + ".log"))
+                {
+                    writer.WriteLine(Date + "     " + codeappli + "     " + "ERREUR : " + err.Message);
+                }
             }
 
             //génération du flag d'arrêt arr.flg
@@ -49,7 +52,12 @@ namespace GeneFileParam
             catch (Exception err) 
             {
                 datetraitement = DateTime.Now;
-                ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 1, "Erreur lors de la génération du arr.flg -->"+err.Message);
+                string NameDate = datetraitement.ToString("yyyyMMdd");
+                string Date = datetraitement.ToString("dd/MM/yyyy HH:mm:ss");
+                using (StreamWriter writer = File.AppendText(@"C:\ProgramData\CtrlPc\LOG\JOURNAL_ERREUR_" + NameDate + ".log"))
+                {
+                    writer.WriteLine(Date + "     " + codeappli + "     " + "ERREUR : " + err.Message);
+                }
             }
 
             //génération du flag d'exception nfo.flg
@@ -65,7 +73,22 @@ namespace GeneFileParam
             catch (Exception err)
             {
                 datetraitement = DateTime.Now;
-                ws.TraceLog(Guid.ToString(), datetraitement, codeappli, 1, "Erreur lors de la génération du nfo.flg -->"+err.Message);
+                string NameDate = datetraitement.ToString("yyyyMMdd");
+                string Date = datetraitement.ToString("dd/MM/yyyy HH:mm:ss");
+                using (StreamWriter writer = File.AppendText(@"C:\ProgramData\CtrlPc\LOG\JOURNAL_ERREUR_" + NameDate + ".log"))
+                {
+                    writer.WriteLine(Date + "     " + codeappli + "     " + "ERREUR : " + err.Message);
+                }
+            }
+
+            //génération du fichier RemLog.nfo
+            try
+            {
+
+            }
+            catch (Exception err)
+            {
+
             }
             
         }
